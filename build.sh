@@ -17,6 +17,7 @@ mkdir ~/twrp11 && cd ~/twrp11
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
 repo sync
+repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
 #echo " ===+++ Patching Recovery Sources +++==="
@@ -27,7 +28,6 @@ git clone --depth=1 $DT_LINK $DT_PATH
 echo " ===+++ Building Recovery +++==="
 export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
-repo sync
 echo " source build/envsetup.sh done"
 lunch twrp_${DEVICE}-eng || abort " lunch failed with exit status $?"
 echo " lunch twrp_${DEVICE}-eng done"
