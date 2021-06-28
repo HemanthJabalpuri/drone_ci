@@ -4,7 +4,7 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DEVICE=realme
+DEVICE=RMX2185
 DT_LINK="https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185 -b test11"
 DT_PATH=device/realme/$DEVICE
 
