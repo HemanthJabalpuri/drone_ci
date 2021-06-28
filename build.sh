@@ -4,9 +4,9 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DEVICE=phoenix
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_phoenix -b a11"
-DT_PATH=device/xiaomi/$DEVICE
+DEVICE=realme
+DT_LINK="https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185 -b test11"
+DT_PATH=device/realme/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -17,7 +17,7 @@ mkdir ~/twrp11 && cd ~/twrp11
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
 repo sync
-repo sync
+repo sync #fix for twrp11 build error
 git clone --depth=1 $DT_LINK $DT_PATH
 
 #echo " ===+++ Patching Recovery Sources +++==="
