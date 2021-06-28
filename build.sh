@@ -5,7 +5,7 @@ abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
 DEVICE=phoenix
-DT_LINK="https://github.com/hraj9258/twrp_phoenix -b a11"
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_phoenix -b a11"
 DT_PATH=device/xiaomi/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
