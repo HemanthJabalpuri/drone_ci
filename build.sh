@@ -5,12 +5,12 @@ abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
 DEVICE=RMX2185
-DT_LINK="https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185 -b nocrypt-fastbootd"
+DT_LINK="https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185 -b nocrypt"
 DT_PATH=device/realme/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
-mkdir -p /tmp/recovery
-cd /tmp/recovery
+mkdir ~/twrp10
+cd ~/twrp10
 apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
@@ -24,6 +24,7 @@ echo " ===+++ Patching Recovery Sources +++==="
 cd bootable/recovery
 curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6679948/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt | patch -p1 -b
 curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt | patch -p1 -b
+curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
 cd -
 
 echo " ===+++ Building Recovery +++==="
