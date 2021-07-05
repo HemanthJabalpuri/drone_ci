@@ -4,7 +4,7 @@ mkdir ~/work
 
 echo "===+++ Cloning kernel sources +++==="
 cd ~/work
-git clone --depth=1 https://github.com/HemanthJabalpuri/android_kernel_realme_mt6765 -b android-10.0
+git clone --depth=1 https://github.com/HemanthJabalpuri/android_kernel_realme_mt6765 -b android-10.0 kernel
 
 echo "===+++ Downloading toolchain +++==="
 mkdir toolchain && cd toolchain
