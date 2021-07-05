@@ -17,7 +17,7 @@ git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linu
 echo "===+++ Building kernel +++==="
 cd ~/work/kernel
 mkdir out
-make O=out ARCH=arm64 RXM2185_defconfig
+make O=out ARCH=arm64 RMX2185_defconfig
 
 PATH="$HOME/work/toolchain/clang/bin:$HOME/work/toolchain/gcc64/bin:$HOME/work/toolchain/gcc/bin:${PATH}" \
 make O=out \
