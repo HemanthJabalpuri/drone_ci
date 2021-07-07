@@ -4,9 +4,9 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-DEVICE=RMX2185
-DT_LINK="https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185 -b test"
-DT_PATH=device/realme/$DEVICE
+DEVICE=X687
+DT_LINK="https://github.com/HemanthJabalpuri/android_device_infinix_X687"
+DT_PATH=device/infinix/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
 mkdir ~/twrp10
@@ -20,12 +20,12 @@ repo init --depth=1 -u $MANIFEST -g default,-device,-mips,-darwin,-notdefault
 repo sync -j$(nproc --all)
 git clone --depth=1 $DT_LINK $DT_PATH
 
-echo " ===+++ Patching Recovery Sources +++==="
-cd bootable/recovery
-curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6679948/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt | patch -p1 -b
-curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt | patch -p1 -b
-curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
-cd -
+#echo " ===+++ Patching Recovery Sources +++==="
+#cd bootable/recovery
+#curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6679948/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt | patch -p1 -b
+#curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt | patch -p1 -b
+#curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
+#cd -
 
 echo " ===+++ Building Recovery +++==="
 rm -rf out
