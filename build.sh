@@ -3,10 +3,10 @@
 
 abort() { echo "$1"; exit 1; }
 
-MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-10.0"
-DEVICE=X687
-DT_LINK="https://github.com/HemanthJabalpuri/android_device_infinix_X687"
-DT_PATH=device/infinix/$DEVICE
+MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
+DEVICE=A7_Pro
+DT_LINK="https://github.com/HemanthJabalpuri/android_device_umidigi_a7_pro"
+DT_PATH=device/umidigi/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
 mkdir ~/twrp10
@@ -39,8 +39,9 @@ echo " mka recoveryimage done"
 
 # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
 echo " ===+++ Uploading Recovery +++==="
-version=$(cat bootable/recovery/variables.h | grep "define PB_MAIN_VERSION" | cut -d \" -f2)
-OUTFILE=PBRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
+version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
+OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
+
 cd out/target/product/$DEVICE
 mv recovery.img ${OUTFILE%.zip}.img
 zip -r9 $OUTFILE ${OUTFILE%.zip}.img
