@@ -5,7 +5,7 @@ abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-10.0"
 DEVICE=X687
-DT_LINK="https://github.com/HemanthJabalpuri/android_device_infinix_X687 -b pbrp-test"
+DT_LINK="https://github.com/HemanthJabalpuri/android_device_infinix_X687 -b pbrp"
 DT_PATH=device/infinix/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
