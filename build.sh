@@ -1,20 +1,20 @@
 #!/bin/bash
 # Just a basic script U can improvise lateron asper ur need xD 
 
-PBRP=y
+PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
-DEVICE=X687
-DT_PATH=device/infinix/$DEVICE
+DEVICE=RMX2001
+DT_PATH=device/realme/$DEVICE
 REC=TWRP
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-10.0"
-  DT_LINK="https://github.com/HemanthJabalpuri/android_device_infinix_X687 -b pbrp"
+  DT_LINK="https://github.com/HemanthJabalpuri/android_device_realme_RMX2001 -b pbrp"
 else
   MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-  DT_LINK="https://github.com/HemanthJabalpuri/android_device_infinix_X687"
+  DT_LINK="https://github.com/HemanthJabalpuri/android_device_realme_RMX2001"
 fi
 
 echo " ===+++ Setting up Build Environment +++==="
