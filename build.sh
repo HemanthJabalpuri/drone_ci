@@ -1,7 +1,7 @@
 #!/bin/bash
 # Just a basic script U can improvise lateron asper ur need xD 
 
-PBRP=y
+PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
