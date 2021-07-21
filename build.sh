@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo $1
+echo $PASSWORD
 echo $@
 echo done
