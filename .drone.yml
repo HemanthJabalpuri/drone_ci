@@ -10,5 +10,8 @@ platform:
 steps:
 - name: Start syncing && Compiling
   image: brock5555/recovery
+  environment:
+    PASSWORD:
+      from_secret: gitpass
   commands:
-  - bash build.sh
+  - bash build.sh ${PASSWORD}
