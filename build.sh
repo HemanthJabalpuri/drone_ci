@@ -6,7 +6,7 @@ PBRP=n
 abort() { echo "$1"; exit 1; }
 
 DEVICE=X687
-DT_PATH=device/infinix/$DEVICE
+DT_PATH=device/Infinix/$DEVICE
 REC=TWRP
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
