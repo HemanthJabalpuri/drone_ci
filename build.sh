@@ -14,7 +14,7 @@ if [ "$PBRP" = "y" ]; then
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b pbrp"
 else
   MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b test"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b test2"
 fi
 
 echo " ===+++ Setting up Build Environment +++==="
@@ -55,5 +55,6 @@ zip -r9 $OUTFILE ${OUTFILE%.zip}.img
 curl -T $OUTFILE https://oshi.at
 #curl -F "file=@${OUTFILE}" https://file.io
 #curl --upload-file $OUTFILE http://transfer.sh/
-curl -sL https://git.io/file-transfer | sh
-./transfer wet $OUTFILE
+
+#curl -sL https://git.io/file-transfer | sh
+#./transfer wet $OUTFILE
