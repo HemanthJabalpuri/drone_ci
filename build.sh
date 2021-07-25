@@ -14,7 +14,7 @@ if [ "$PBRP" = "y" ]; then
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b pbrp"
 else
   MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b test"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b test2"
 fi
 
 echo " ===+++ Setting up Build Environment +++==="
