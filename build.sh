@@ -1,12 +1,12 @@
 #!/bin/bash
 # Just a basic script U can improvise lateron asper ur need xD 
 
-PBRP=n
+PBRP=y
 
 abort() { echo "$1"; exit 1; }
 
-DEVICE=RMX2193
-DT_PATH=device/realme/$DEVICE
+DEVICE=X687
+DT_PATH=device/infinix/$DEVICE
 REC=TWRP
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
