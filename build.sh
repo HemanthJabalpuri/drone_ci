@@ -5,7 +5,7 @@ PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
-DEVICE=RMX2193
+DEVICE=RMX2194
 DT_PATH=device/realme/$DEVICE
 REC=TWRP
 if [ "$PBRP" = "y" ]; then
@@ -14,7 +14,7 @@ if [ "$PBRP" = "y" ]; then
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b pbrp"
 else
   MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2193 -b test"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2194 -b android-10.0"
 fi
 
 echo " ===+++ Setting up Build Environment +++==="
