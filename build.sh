@@ -5,7 +5,7 @@ PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
-DEVICE=RMX2194
+DEVICE=RMX2193
 DT_PATH=device/realme/$DEVICE
 REC=TWRP
 if [ "$PBRP" = "y" ]; then
@@ -14,7 +14,7 @@ if [ "$PBRP" = "y" ]; then
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b pbrp"
 else
   MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2194 -b android-10.0"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2193 -b test"
 fi
 
 echo " ===+++ Setting up Build Environment +++==="
@@ -30,8 +30,8 @@ git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
 cd bootable/recovery
-#curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6679948/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt | patch -p1 -b
-curl -sL https://oshi.at/voCgpK | patch -p1 -b
+curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6679948/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt | patch -p1 -b
+#curl -sL https://oshi.at/voCgpK | patch -p1 -b
 curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt | patch -p1 -b
 curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
 cd -
