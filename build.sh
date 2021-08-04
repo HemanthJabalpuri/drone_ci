@@ -8,9 +8,8 @@ git clone --depth=1 https://github.com/HemanthJabalpuri/mt6755_aeon6755_66_n_ker
 
 echo "===+++ Downloading toolchain +++==="
 mkdir toolchain && cd toolchain
-git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 gcc64
+git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 gcc64
 
-ls $HOME/work/toolchain/gcc64/bin
 echo "===+++ Building kernel +++==="
 cd ~/work/kernel
 export CROSS_COMPILE=$HOME/work/toolchain/gcc64/bin/aarch64-linux-android-
