@@ -9,6 +9,9 @@ git clone --depth=1 https://github.com/HemanthJabalpuri/mt6755_aeon6755_66_n_ker
 echo "===+++ Downloading toolchain +++==="
 mkdir toolchain && cd toolchain
 git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 gcc64
+ls
+ls bin
+pwd
 
 echo "===+++ Building kernel +++==="
 cd ~/work/kernel
