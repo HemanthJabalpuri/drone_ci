@@ -12,6 +12,11 @@ git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linu
 
 echo "===+++ Building kernel +++==="
 cd ~/work/kernel
+
+echo " +*+*+*+=== Listing files ===+*+*+*+"
+ls $HOME/work/toolchain/bin
+echo " +*+*+*+=== Listing files End===+*+*+*+"
+
 export CROSS_COMPILE=$HOME/work/toolchain/bin/aarch64-linux-android-
 export ARCH=arm64 && export SUBARCH=arm64
 make aeon6750_66_n_defconfig
