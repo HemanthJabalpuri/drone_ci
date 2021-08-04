@@ -18,9 +18,9 @@ else
 fi
 
 echo " ===+++ Setting up Build Environment +++==="
-apt install openssh-server -y
+apt install openssh-server openjdk-8-jdk -y
 apt update --fix-missing
-apt install openssh-server -y
+apt install openssh-server openjdk-8-jdk -y
 mkdir ~/twrpBuilding && cd ~/twrpBuilding
 
 echo " ===+++ Syncing Recovery Sources +++==="
