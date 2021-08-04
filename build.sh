@@ -13,7 +13,7 @@ if [ "$PBRP" = "y" ]; then
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-10.0"
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b pbrp"
 else
-  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-7.1"
+  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-9.0"
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_innjoo_Fire4Plus -b master"
 fi
 
