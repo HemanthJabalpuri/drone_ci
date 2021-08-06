@@ -1,10 +1,9 @@
 #!/bin/bash
 # Just a basic script U can improvise lateron asper ur need xD 
 
-MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-DEVICE=RMX2185
-DT_LINK="https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185 -b ofox-test"
-DT_PATH=device/realme/$DEVICE
+DEVICE=CD6
+DT_LINK="https://github.com/mastersenpai05/twrp_device_TECNO_CD6 -b orangefox"
+DT_PATH=device/TECNO/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
 mkdir -p ~/OrangeFox_10
