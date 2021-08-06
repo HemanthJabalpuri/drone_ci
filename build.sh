@@ -4,7 +4,7 @@ mkdir ~/work
 
 echo "===+++ Cloning kernel sources +++==="
 cd ~/work
-git clone --depth=1 https://github.com/HemanthJabalpuri/mt6755_aeon6755_66_n_kernel kernel
+git clone --depth=1 https://github.com/99degree/android_kernel_m3note -b m3note_20190813 kernel
 
 echo "===+++ Downloading toolchain +++==="
 mkdir toolchain && cd toolchain
@@ -14,7 +14,7 @@ echo "===+++ Building kernel +++==="
 cd ~/work/kernel
 export CROSS_COMPILE=$HOME/work/toolchain/gcc64/bin/aarch64-linux-android-
 export ARCH=arm64 && export SUBARCH=arm64
-make aeon6750_66_n_defconfig
+make m3_note_defconfig
 make -j$(nproc --all)
 
 echo "===+++ Compiler version +++==="
