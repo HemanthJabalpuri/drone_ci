@@ -13,8 +13,8 @@ if [ "$PBRP" = "y" ]; then
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-10.0"
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b pbrp"
 else
-  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-9.0"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_innjoo_Fire4Plus -b master"
+  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-7.1"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_innjoo_Fire4Plus -b test"
 fi
 
 echo " ===+++ Setting up Build Environment +++==="
@@ -39,7 +39,7 @@ echo " ===+++ Building Recovery +++==="
 rm -rf out
 source build/envsetup.sh
 echo " source build/envsetup.sh done"
-export ALLOW_MISSING_DEPENDENCIES=true
+#export ALLOW_MISSING_DEPENDENCIES=true
 lunch omni_${DEVICE}-eng || abort " lunch failed with exit status $?"
 echo " lunch omni_${DEVICE}-eng done"
 mka recoveryimage || abort " mka failed with exit status $?"
