@@ -29,11 +29,11 @@ repo sync -j$(nproc --all)
 git clone --depth=1 $DT_LINK $DT_PATH
 
 #echo " ===+++ Patching Recovery Sources +++==="
-#cd bootable/recovery
+cd bootable/recovery
 curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6679948/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt | patch -p1 -b
 #curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt | patch -p1 -b
 curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
-#cd -
+cd -
 
 echo " ===+++ Building Recovery +++==="
 rm -rf out
