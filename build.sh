@@ -24,7 +24,7 @@ echo " ===+++ Patching Recovery Sources +++==="
 cd bootable/recovery
 curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758038/0001-Provide-an-option-to-skip-compatibility.zip-check-a11.patch.txt | patch -p1 -b
 #curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt | patch -p1 -b
-#curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
+curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
 cd -
 
 echo " ===+++ Building Recovery +++==="
