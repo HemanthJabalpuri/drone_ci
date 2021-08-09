@@ -4,8 +4,8 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DEVICE=RMX2001
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2001 -b android-11"
+DEVICE=RMX2193
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2193 -b android-11"
 DT_PATH=device/realme/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
@@ -17,7 +17,7 @@ mkdir ~/twrp11 && cd ~/twrp11
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
 repo sync
-repo sync #fix for twrp11 build error
+repo sync #fix for twrp11 build error until https://gerrit.twrp.me/c/android_vendor_twrp/+/4204 is merged
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
