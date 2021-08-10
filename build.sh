@@ -4,9 +4,9 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DEVICE=RMX2193
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2193 -b android-11"
-DT_PATH=device/realme/$DEVICE
+DEVICE=cannong
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_cannong -b main"
+DT_PATH=device/xiaomi/cannong
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -22,9 +22,9 @@ git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
 cd bootable/recovery
-curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758038/0001-Provide-an-option-to-skip-compatibility.zip-check-a11.patch.txt | patch -p1 -b
+#curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758038/0001-Provide-an-option-to-skip-compatibility.zip-check-a11.patch.txt | patch -p1 -b
 #curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt | patch -p1 -b
-curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
+#curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
 cd -
 
 echo " ===+++ Building Recovery +++==="
