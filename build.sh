@@ -5,17 +5,17 @@ PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
-DEVICE=RMX2193
-DT_PATH=device/realme/$DEVICE
-REC=TWRP
+DT_PATH=device/innjoo/Fire4Plus
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-10.0"
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b pbrp"
 else
-  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2193 -b android-10.0"
+  REC=TWRP
+  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-7.1"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_innjoo_Fire4Plus -b twrp-7.1"
 fi
+DEVICE=${DT_PATH##*\/}
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server openjdk-8-jdk -y
@@ -29,17 +29,17 @@ repo sync -j$(nproc --all)
 git clone --depth=1 $DT_LINK $DT_PATH
 
 #echo " ===+++ Patching Recovery Sources +++==="
-cd bootable/recovery
-curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6679948/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt | patch -p1 -b
+#cd bootable/recovery
+#curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6679948/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt | patch -p1 -b
 #curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt | patch -p1 -b
-curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
-cd -
+#curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
+#cd -
 
 echo " ===+++ Building Recovery +++==="
 rm -rf out
 source build/envsetup.sh
 echo " source build/envsetup.sh done"
-export ALLOW_MISSING_DEPENDENCIES=true
+#export ALLOW_MISSING_DEPENDENCIES=true
 lunch omni_${DEVICE}-eng || abort " lunch failed with exit status $?"
 echo " lunch omni_${DEVICE}-eng done"
 mka recoveryimage || abort " mka failed with exit status $?"
