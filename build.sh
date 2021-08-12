@@ -4,20 +4,19 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DEVICE=cannong
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_cannong -b main"
-DT_PATH=device/xiaomi/cannong
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b test11"
+DT_PATH=device/realme/RMX2185
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
 mkdir ~/twrp11 && cd ~/twrp11
+DEVICE=${DT_PATH##*\/}
 
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
 repo sync
-repo sync #fix for twrp11 build error until https://gerrit.twrp.me/c/android_vendor_twrp/+/4204 is merged
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
