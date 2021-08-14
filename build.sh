@@ -3,9 +3,10 @@
 
 abort() { echo "$1"; exit 1; }
 
-MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b test11"
-DT_PATH=device/realme/RMX2185
+#MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
+MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb -b android-11.0"
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2001 -b pbrp-11-7"
+DT_PATH=device/realme/RMX2001
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -16,6 +17,7 @@ DEVICE=${DT_PATH##*\/}
 
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
+repo sync
 repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
@@ -30,7 +32,7 @@ echo " ===+++ Building Recovery +++==="
 export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
 echo " source build/envsetup.sh done"
-lunch twrp_${DEVICE}-eng || abort " lunch failed with exit status $?"
+lunch omni_${DEVICE}-eng || abort " lunch failed with exit status $?"
 echo " lunch twrp_${DEVICE}-eng done"
 mka recoveryimage || abort " mka failed with exit status $?"
 echo " mka recoveryimage done"
