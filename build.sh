@@ -5,22 +5,22 @@ PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
-DT_PATH=device/innjoo/Fire4Plus
+DT_PATH=device/infinix/X687
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-10.0"
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b pbrp"
 else
   REC=TWRP
-  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-7.1"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_innjoo_Fire4Plus -b twrp-7.1"
+  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b android-10.0"
 fi
 DEVICE=${DT_PATH##*\/}
 
 echo " ===+++ Setting up Build Environment +++==="
-apt install openssh-server openjdk-8-jdk -y
+apt install openssh-server -y
 apt update --fix-missing
-apt install openssh-server openjdk-8-jdk -y
+apt install openssh-server -y
 mkdir ~/twrpBuilding && cd ~/twrpBuilding
 
 echo " ===+++ Syncing Recovery Sources +++==="
@@ -39,7 +39,7 @@ echo " ===+++ Building Recovery +++==="
 rm -rf out
 source build/envsetup.sh
 echo " source build/envsetup.sh done"
-#export ALLOW_MISSING_DEPENDENCIES=true
+export ALLOW_MISSING_DEPENDENCIES=true
 lunch omni_${DEVICE}-eng || abort " lunch failed with exit status $?"
 echo " lunch omni_${DEVICE}-eng done"
 mka recoveryimage || abort " mka failed with exit status $?"
