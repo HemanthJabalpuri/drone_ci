@@ -4,9 +4,8 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-DEVICE=RMX2185
+DT_PATH=device/realme/RMX2185
 DT_LINK="https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185 -b test"
-DT_PATH=device/realme/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
 mkdir ~/twrp10
@@ -14,6 +13,7 @@ cd ~/twrp10
 apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
+DEVICE=${DT_PATH##*\/}
 
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST -g default,-device,-mips,-darwin,-notdefault 
