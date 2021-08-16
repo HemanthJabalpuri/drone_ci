@@ -22,10 +22,11 @@ git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
 cd bootable/recovery
-curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6679948/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt | patch -p1 -b
-curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt | patch -p1 -b
-curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
-curl -sL https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6989323/0001-twrpapp-automatically-exclude-on-AB-devices.patch.txt | patch -p1 -b
+curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6679948/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt | patch -p1
+curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt | patch -p1
+curl -sL https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6989323/0001-twrpapp-automatically-exclude-on-AB-devices.patch.txt | patch -p1
+curl -sL https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6990870/NotchFix.patch.txt | patch -p1
+curl -sL https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6990875/0001-Add-flashlight-sysrw-sysro-commands-and-change-fastb.patch.txt | patch -p1
 cd -
 
 echo " ===+++ Building Recovery +++==="
