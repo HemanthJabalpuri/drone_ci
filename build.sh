@@ -13,6 +13,7 @@ cd ~/twrp10
 apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
+DEVICE=${DT_PATH##*\/}
 
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST -g default,-device,-mips,-darwin,-notdefault 
