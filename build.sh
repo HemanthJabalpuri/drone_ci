@@ -3,10 +3,9 @@
 
 abort() { echo "$1"; exit 1; }
 
-#MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb -b android-11.0"
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2001 -b pbrp-11-7"
-DT_PATH=device/realme/RMX2001
+MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b android-11"
+DT_PATH=device/realme/RMX2185
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -18,14 +17,16 @@ DEVICE=${DT_PATH##*\/}
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
 repo sync
-repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
 cd bootable/recovery
-#curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758038/0001-Provide-an-option-to-skip-compatibility.zip-check-a11.patch.txt | patch -p1 -b
-#curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt | patch -p1 -b
-#curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt | patch -p1 -b
+applyPatch() {
+  curl -sL $1 | patch -p1
+  [ $? != 0 ] && echo " Patch $1 failed" && exit
+}
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6992094/0001-Provide-an-option-to-skip-compatibility.zip-check.patch-a11.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
 cd -
 
 echo " ===+++ Building Recovery +++==="
