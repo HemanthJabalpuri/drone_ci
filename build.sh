@@ -26,7 +26,7 @@ curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/fil
 curl -sL https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt | patch -p1
 curl -sL https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6989323/0001-twrpapp-automatically-exclude-on-AB-devices.patch.txt | patch -p1
 curl -sL https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6990870/NotchFix.patch.txt | patch -p1
-curl -sL https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6990875/0001-Add-flashlight-sysrw-sysro-commands-and-change-fastb.patch.txt | patch -p1
+curl -sL https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6990939/0001-String-fixes-and-added-some-shell-functions.patch.txt | patch -p1
 cd -
 
 echo " ===+++ Building Recovery +++==="
