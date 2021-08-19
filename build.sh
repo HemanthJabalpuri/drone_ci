@@ -18,9 +18,10 @@ repo sync -j$(nproc --all)
 
 echo " ===+++ Searching for buildable libs +++==="
 searchLib() {
-  echo "======+++ Searching $1 +++======"
-  ripgrep "$1" .
+  for i in "$@"; do
+    echo "======+++ Searching $i +++======"
+    rg "$i" .
+  done
 }
 
-searchLib 'vendor.display.config@1.0'
-searchLib 'libdrm'
+searchLib 'vendor.display.config@1.0' 'libdrm' 'vendor.qti.hardware.tui_comm@1.0'
