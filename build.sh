@@ -5,7 +5,7 @@ PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
-DT_PATH=device/realme/RMX2195
+DT_PATH=device/realme/RMX3171
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-10.0"
@@ -13,7 +13,7 @@ if [ "$PBRP" = "y" ]; then
 else
   REC=TWRP
   MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2195 -b test"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX3171 -b android-10.0"
 fi
 DEVICE=${DT_PATH##*\/}
 
@@ -35,14 +35,8 @@ applyPatch() {
   [ $? != 0 ] && echo " Patch $1 failed" && exit
 }
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2194/files/6997950/SkipTrebleCompatibility.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt
 applyPatch https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6758394/NotchFix.patch.txt
-
-# Fix stuck on logo
-applyPatch https://github.com/TeamWin/android_bootable_recovery/commit/cd79c90d27941edbda6a92593835aec2a99c2ee9.patch
-cd - && cd system/sepolicy
-applyPatch https://github.com/omnirom/android_system_sepolicy/commit/50c5d731e0aa4098aac293e4024b213b5c445b99.patch
-applyPatch https://github.com/omnirom/android_system_sepolicy/commit/74affd140396b74840e5dd8018b423ffcbe25a18.patch
 cd -
 
 echo " ===+++ Building Recovery +++==="
