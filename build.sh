@@ -12,7 +12,7 @@ if [ "$PBRP" = "y" ]; then
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b pbrp"
 else
   REC=TWRP
-  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-5.1"
+  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-7.1"
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_vivo_Y15S -b twrp-5.1"
 fi
 DEVICE=${DT_PATH##*\/}
