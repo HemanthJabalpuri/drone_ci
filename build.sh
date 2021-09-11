@@ -13,7 +13,7 @@ if [ "$PBRP" = "y" ]; then
 else
   REC=TWRP
   MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2195 -b test"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2195 -b android-11.0"
 fi
 DEVICE=${DT_PATH##*\/}
 
