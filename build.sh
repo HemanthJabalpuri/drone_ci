@@ -26,11 +26,13 @@ applyPatch() {
   curl -sL $1 | patch -p1
   [ $? != 0 ] && echo " Patch $1 failed" && exit
 }
-applyPatch https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6679948/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6679948/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt
+
 #applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6989323/0001-twrpapp-automatically-exclude-on-AB-devices.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6990939/0001-String-fixes-and-added-some-shell-functions.patch.txt
+
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6990939/0001-String-fixes-and-added-some-shell-functions.patch.txt
 cd -
 
 echo " ===+++ Building Recovery +++==="
