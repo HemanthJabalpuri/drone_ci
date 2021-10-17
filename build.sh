@@ -7,13 +7,13 @@ apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
 
-repo init --depth=1 --no-repo-verify -u git://github.com/ArrowOS/android_manifest.git -b arrow-11.0 -g default,-device,-mips,-darwin,-notdefault
-git clone https://github.com/HemanthJabalpuri/local_manifest --depth 1 -b master .repo/local_manifests
+repo init --depth=1 --no-repo-verify -u https://github.com/Havoc-OS/android_manifest.git -b eleven -g default,-device,-mips,-darwin,-notdefault
+git clone https://github.com/HemanthJabalpuri/local_manifest --depth 1 -b havoc .repo/local_manifests
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 # build rom (4)
 source build/envsetup.sh
-lunch arrow_RMX2185-userdebug
+lunch havoc_RMX2185-userdebug
 
 make sepolicy
 make bootimage
