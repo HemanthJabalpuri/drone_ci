@@ -20,15 +20,17 @@ repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
+rm -rf bootable/recovery
+git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b android-11 bootable/recovery
 cd bootable/recovery
 applyPatch() {
   curl -sL $1 | patch -p1
   [ $? != 0 ] && echo " Patch $1 failed" && exit
 }
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6992094/0001-Provide-an-option-to-skip-compatibility.zip-check.patch-a11.txt
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7350748/0001-String-fixes-and-added-some-shell-functions-a11.patch.txt
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7350752/0001-Super-as-Super-only.patch-a11.txt
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6992094/0001-Provide-an-option-to-skip-compatibility.zip-check.patch-a11.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7350748/0001-String-fixes-and-added-some-shell-functions-a11.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7350752/0001-Super-as-Super-only.patch-a11.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
 cd -
 
 echo " ===+++ Building Recovery +++==="
