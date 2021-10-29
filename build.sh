@@ -5,7 +5,7 @@ PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
-DT_PATH=device/infinix/X687
+DT_PATH=device/infinix/X687B
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-10.0"
