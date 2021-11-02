@@ -1,5 +1,5 @@
 #!/bin/bash
-# Just a basic script U can improvise lateron asper ur need xD 
+# Just a basic script U can improvise lateron as per ur need xD 
 
 abort() { echo "$1"; exit 1; }
 
@@ -21,6 +21,8 @@ repo sync -j$(nproc --all)
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
+rm -rf bootable/recovery
+git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b test bootable/recovery
 cd bootable/recovery
 applyPatch() {
   curl -sL $1 | patch -p1
@@ -55,4 +57,4 @@ zip -r9 $OUTFILE ${OUTFILE%.zip}.img
 
 curl -T $OUTFILE https://oshi.at
 #curl -F "file=@${OUTFILE}" https://file.io
-#curl --upload-file $OUTFILE http://transfer.sh/
+curl --upload-file $OUTFILE http://transfer.sh/
