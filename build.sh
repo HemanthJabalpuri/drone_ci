@@ -22,7 +22,7 @@ git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
 rm -rf bootable/recovery
-git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b test-10 bootable/recovery
+git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b test bootable/recovery
 cd bootable/recovery
 applyPatch() {
   curl -sL $1 | patch -p1
