@@ -10,13 +10,11 @@ cd ~/OrangeFox_10
 apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
-mkdir ~/.ssh
-ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
-git clone https://gitlab.com/OrangeFox/misc/scripts
+#git clone https://gitlab.com/OrangeFox/misc/scripts
 DEVICE=${DT_PATH##*\/}
-cd scripts
-bash setup/android_build_env.sh
-bash setup/install_android_sdk.sh
+#cd scripts
+#bash setup/android_build_env.sh
+#bash setup/install_android_sdk.sh
 
 echo " ===+++ Syncing Recovery Sources +++==="
 cd ~/OrangeFox_10
