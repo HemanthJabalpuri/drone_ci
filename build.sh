@@ -1,15 +1,15 @@
 #!/bin/bash
 # Just a basic script U can improvise lateron asper ur need xD 
 
-DEVICE=CD6
-DT_LINK="https://github.com/mastersenpai05/twrp_device_TECNO_CD6 -b orangefox"
-DT_PATH=device/TECNO/$DEVICE
+DT_PATH=device/realme/RMX2185
+DT_LINK="https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185 -b android-10"
 
 echo " ===+++ Setting up Build Environment +++==="
 mkdir -p ~/OrangeFox_10
 cd ~/OrangeFox_10
 apt install openssh-server -y
 git clone https://gitlab.com/OrangeFox/misc/scripts
+DT_PATH=device/realme/RMX2185
 cd scripts
 sudo bash setup/android_build_env.sh
 sudo bash setup/install_android_sdk.sh
