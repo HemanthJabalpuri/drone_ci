@@ -11,7 +11,7 @@ apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
 git clone https://gitlab.com/OrangeFox/misc/scripts
-DT_PATH=device/realme/RMX2185
+DEVICE=${DT_PATH##*\/}
 cd scripts
 sudo bash setup/android_build_env.sh
 sudo bash setup/install_android_sdk.sh
