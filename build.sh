@@ -8,6 +8,8 @@ echo " ===+++ Setting up Build Environment +++==="
 mkdir -p ~/OrangeFox_10
 cd ~/OrangeFox_10
 apt install openssh-server -y
+apt update --fix-missing
+apt install openssh-server -y
 git clone https://gitlab.com/OrangeFox/misc/scripts
 DT_PATH=device/realme/RMX2185
 cd scripts
