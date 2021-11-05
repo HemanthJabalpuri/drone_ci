@@ -5,7 +5,7 @@ PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
-DT_PATH=device/infinix/X626
+DT_PATH=device/infinix/X627
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-10.0"
@@ -13,7 +13,7 @@ if [ "$PBRP" = "y" ]; then
 else
   REC=TWRP
   MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-9.0"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X626 -b test"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X627"
 fi
 DEVICE=${DT_PATH##*\/}
 
