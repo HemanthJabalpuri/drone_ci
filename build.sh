@@ -21,7 +21,7 @@ cd ~/OrangeFox_10
 #git clone https://gitlab.com/OrangeFox/sync.git
 #cd sync
 #./get_fox_10.sh ~/OrangeFox_10/fox_10.0
-rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
+rsync rsync://sources.orangefox.download/sources/fox_10.0 . -a
 cd ~/OrangeFox_10/fox_10.0
 git clone --depth=1 $DT_LINK $DT_PATH
 
