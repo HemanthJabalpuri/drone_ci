@@ -1,11 +1,11 @@
 #!/bin/bash
 # Just a basic script U can improvise lateron asper ur need xD 
 
-PBRP=n
+PBRP=y
 
 abort() { echo "$1"; exit 1; }
 
-DT_PATH=device/realme/RMX2040
+DT_PATH=device/realme/RMX3191
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-11.0"
@@ -34,11 +34,11 @@ applyPatch() {
   curl -sL $1 | patch -p1
   [ $? != 0 ] && echo " Patch $1 failed" && exit
 }
-applyPatch https://github.com/TeamWin/android_bootable_recovery/commit/878abc76c26e01e98c9b820c143b51086fe1577c.patch
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2194/files/6997950/SkipTrebleCompatibility.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6990939/0001-String-fixes-and-added-some-shell-functions.patch.txt
+#applyPatch https://github.com/TeamWin/android_bootable_recovery/commit/878abc76c26e01e98c9b820c143b51086fe1577c.patch
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2194/files/6997950/SkipTrebleCompatibility.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6990939/0001-String-fixes-and-added-some-shell-functions.patch.txt
 cd -
 
 echo " ===+++ Building Recovery +++==="
