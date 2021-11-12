@@ -2,12 +2,12 @@
 
 mkdir -p ~/workspace/source; cd ~/workspace/source;
 
-git clone https://github.com/techyminati/realme8_C25_C25s_Narzo30_Narzo50A_AndroidR_kernel_source kernel;
+git clone --depth=1 https://github.com/techyminati/realme8_C25_C25s_Narzo30_Narzo50A_AndroidR_kernel_source kernel;
 
 mkdir prebuild;
-git clone https://android.googlesource.com/platform/prebuilts/build-tools;
-git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86;
-git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9.1
+git clone --depth=1 https://android.googlesource.com/platform/prebuilts/build-tools;
+git clone --depth=1 https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86;
+git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
 
 # (4) add toolchain path to PATH environment variable
 
