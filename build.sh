@@ -4,10 +4,10 @@ mkdir -p ~/workspace/source; cd ~/workspace/source;
 
 git clone --depth=1 https://github.com/techyminati/realme8_C25_C25s_Narzo30_Narzo50A_AndroidR_kernel_source kernel-4.14;
 
-mkdir prebuild;
+mkdir prebuilts; cd prebuilts;
 git clone --depth=1 https://android.googlesource.com/platform/prebuilts/build-tools;
-git clone --depth=1 https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86;
-git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
+git clone --depth=1 https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 clang/host/linux-x86;
+git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 gcc/linux-x86/aarch64/aarch64-linux-android-4.9;
 
 # (4) add toolchain path to PATH environment variable
 
@@ -19,7 +19,7 @@ export COMPILE_PLATFORM=oppo6769
 export OPPO_COMPILE_PLATFORM=oppo6769
 export PATH=${SOURCE_ROOT}/prebuilts/clang/host/linux-x86/clang-r383902b/bin:${SOURCE_ROOT}/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:/usr/bin:/bin:$PATH
 export MAKE_PATH=${SOURCE_ROOT}/prebuilts/build-tools/linux-x86/bin/
-export CROSS_COMPILE=${SOURCE_ROOT}/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9.1/bin/aarch64-linux-androidkernel-
+export CROSS_COMPILE=${SOURCE_ROOT}/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel-
 export KERNEL_ARCH=arm64
 export KERNEL_DIR=${SOURCE_ROOT}/kernel-4.14
 export KERNEL_OUT=${KERNEL_DIR}/../kernel_out
