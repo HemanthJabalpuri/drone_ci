@@ -6,7 +6,7 @@ git clone --depth=1 https://github.com/techyminati/realme8_C25_C25s_Narzo30_Narz
 
 mkdir prebuilts; cd prebuilts;
 git clone --depth=1 https://android.googlesource.com/platform/prebuilts/build-tools;
-git clone --depth=1 https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 clang/host/linux-x86;
+git clone --depth=1 https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 -b android11-release clang/host/linux-x86;
 git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 gcc/linux-x86/aarch64/aarch64-linux-android-4.9;
 
 # (4) add toolchain path to PATH environment variable
