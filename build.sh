@@ -1,40 +1,39 @@
-#!/bin/sh
+# 1.install toolchain and make tools for build kernel
 
-mkdir ~/work
+mkdir -p ~/workspace/source; cd ~/workspace/source;
 
-echo "===+++ Cloning kernel sources +++==="
-cd ~/work
-git clone --depth=1 https://github.com/techyminati/realme8_C25_C25s_Narzo30_Narzo50A_AndroidR_kernel_source kernel
+git clone https://github.com/techyminati/realme8_C25_C25s_Narzo30_Narzo50A_AndroidR_kernel_source kernel;
 
-echo "===+++ Downloading toolchain +++==="
-mkdir toolchain && cd toolchain
-#wget -q -O clang.tar.gz https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/ee5ad7f5229892ff06b476e5b5a11ca1f39bf3a9/clang-r365631c.tar.gz
-#wget -q -O clang.tar.gz https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/tags/android-10.0.0_r47/clang-r353983c.tar.gz
-#mkdir clang && tar xzf clang.tar.gz -C clang
-#git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 gcc64
-#git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 gcc
+mkdir prebuild;
+git clone https://android.googlesource.com/platform/prebuilts/build-tools;
+git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86;
+git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9.1
 
-git clone --depth=1 https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-5484270 -b 9.0 clang
-git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 gcc64
-git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 gcc
+# (4) add toolchain path to PATH environment variable
 
-echo "===+++ Building kernel +++==="
-cd ~/work/kernel
-mkdir out
-make O=out ARCH=arm64 oppo6769_defconfig
+# 2. export some environment variable and build the kernel and dtb ,mobile model RMX3085 use oppo6785;RMX3191,RM3192,RMX3193 use oppo6768 instead of oppo6785,RMX3195,RMX3197,RMX3430 use oppo6769 instead of oppo6785 below
 
-PATH="$HOME/work/toolchain/clang/bin:$HOME/work/toolchain/gcc64/bin:$HOME/work/toolchain/gcc/bin:${PATH}" \
-make O=out \
-     ARCH=arm64 \
-     CC=clang \
-     CLANG_TRIPLE=aarch64-linux-gnu- \
-     CROSS_COMPILE=aarch64-linux-android- \
-     CROSS_COMPILE_ARM32=arm-linux-androideabi- \
-     -j$(nproc --all)
+export SOURCE_ROOT=~/workspace/source
+export DEFCONFIG=oppo6769_defconfig
+export COMPILE_PLATFORM=oppo6769
+export OPPO_COMPILE_PLATFORM=oppo6769
+export PATH=${SOURCE_ROOT}/prebuilts/clang/host/linux-x86/clang-r383902b/bin:${SOURCE_ROOT}/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:/usr/bin:/bin:$PATH
+export MAKE_PATH=${SOURCE_ROOT}/prebuilts/build-tools/linux-x86/bin/
+export CROSS_COMPILE=${SOURCE_ROOT}/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9.1/bin/aarch64-linux-androidkernel-
+export KERNEL_ARCH=arm64
+export KERNEL_DIR=${SOURCE_ROOT}/kernel-4.14
+export KERNEL_OUT=${KERNEL_DIR}/../kernel_out
+export KERNEL_SRC=${KERNEL_OUT}
+export CLANG_TRIPLE=aarch64-linux-gnu-
+export OUT_DIR=${KERNEL_OUT}
+export ARCH=${KERNEL_ARCH}
+export TARGET_INCLUDES=${TARGET_KERNEL_MAKE_CFLAGS}
+export TARGET_LINCLUDES=${TARGET_KERNEL_MAKE_LDFLAGS}
 
-echo "===+++ Compiler version +++==="
-grep "LINUX_COMPILER" out/include/generated/compile.h
+export TARGET_KERNEL_MAKE_ENV+="LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy CC=${SOURCE_ROOT}/prebuilts/clang/host/linux-x86/clang-r383902b/bin/clang"
 
-echo "===+++ Uploading kernel +++==="
-curl -T out/arch/arm64/boot/Image.gz-dtb https://oshi.at
-curl -T out/arch/arm64/boot/mtk.dtb https://oshi.at
+cd ${KERNEL_DIR} && \
+${MAKE_PATH}make O=${OUT_DIR} ${TARGET_KERNEL_MAKE_ENV} HOSTLDFLAGS="${TARGET_LINCLUDES}" ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} ${DEFCONFIG}
+
+cd ${OUT_DIR} && \
+${MAKE_PATH}make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} HOSTCFLAGS="${TARGET_INCLUDES}" HOSTLDFLAGS="${TARGET_LINCLUDES}" O=${OUT_DIR} ${TARGET_KERNEL_MAKE_ENV}
