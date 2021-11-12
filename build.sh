@@ -1,19 +1,19 @@
 #!/bin/bash
 # Just a basic script U can improvise lateron asper ur need xD 
 
-PBRP=y
+PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
-DT_PATH=device/realme/RMX3191
+DT_PATH=device/vsmart/coconut
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-11.0"
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX3191 -b pbrp"
 else
   REC=TWRP
-  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2040"
+  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-9.0"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_vsmart_coconut"
 fi
 DEVICE=${DT_PATH##*\/}
 
