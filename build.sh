@@ -2,7 +2,7 @@
 
 mkdir -p ~/workspace/source; cd ~/workspace/source;
 
-git clone --depth=1 https://github.com/techyminati/realme8_C25_C25s_Narzo30_Narzo50A_AndroidR_kernel_source kernel;
+git clone --depth=1 https://github.com/techyminati/realme8_C25_C25s_Narzo30_Narzo50A_AndroidR_kernel_source kernel-4.14;
 
 mkdir prebuild;
 git clone --depth=1 https://android.googlesource.com/platform/prebuilts/build-tools;
