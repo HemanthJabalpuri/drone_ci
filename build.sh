@@ -4,8 +4,8 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX3191 -b android-11"
-DT_PATH=device/realme/RMX3191
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2193 -b android-11"
+DT_PATH=device/realme/RMX2193
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -29,7 +29,7 @@ applyPatch() {
 }
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6992094/0001-Provide-an-option-to-skip-compatibility.zip-check.patch-a11.txt
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415929/0001-String-fixes.patch.txt
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415933/0001-Some-shell-funtions.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415933/0001-Some-shell-funtions.patch.txt
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7350752/0001-Super-as-Super-only.patch-a11.txt
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
 cd -
