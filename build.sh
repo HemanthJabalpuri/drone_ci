@@ -18,9 +18,11 @@ fi
 DEVICE=${DT_PATH##*\/}
 
 echo " ===+++ Setting up Build Environment +++==="
-apt install openssh-server openjdk-8-jdk -y
+#apt install openssh-server openjdk-8-jdk -y
+apt install openssh-server -y
 apt update --fix-missing
-apt install openssh-server openjdk-8-jdk -y
+#apt install openssh-server openjdk-8-jdk -y
+apt install openssh-server -y
 mkdir ~/twrpBuilding && cd ~/twrpBuilding
 
 echo " ===+++ Syncing Recovery Sources +++==="
