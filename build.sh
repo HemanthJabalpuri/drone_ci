@@ -20,8 +20,8 @@ repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
-#rm -rf bootable/recovery
-#git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b android-11 bootable/recovery
+rm -rf bootable/recovery
+git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b formatdata bootable/recovery
 cd bootable/recovery
 applyPatch() {
   curl -sL $1 | patch -p1
@@ -48,7 +48,7 @@ echo " mka recoveryimage done"
 echo " ===+++ Uploading Recovery +++==="
 version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
 #OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
-OUTFILE=TWRP-${version}-${DEVICE}-UI2-$(date "+%Y%m%d").zip
+OUTFILE=TWRP-${version}-${DEVICE}-UI1-$(date "+%Y%m%d").zip
 
 cd out/target/product/$DEVICE
 mv recovery.img ${OUTFILE%.zip}.img
@@ -57,3 +57,4 @@ zip -r9 $OUTFILE ${OUTFILE%.zip}.img
 curl -T $OUTFILE https://oshi.at
 curl -F "file=@${OUTFILE}" https://file.io
 curl --upload-file $OUTFILE http://transfer.sh/
+echo " "
