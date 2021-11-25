@@ -13,7 +13,7 @@ if [ "$PBRP" = "y" ]; then
 else
   REC=TWRP
   MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0-deprecated"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2195 -b android-10.0"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2195 -b android-11"
 fi
 DEVICE=${DT_PATH##*\/}
 
@@ -63,7 +63,7 @@ else
   version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
 fi
 #OUTFILE=${REC}-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
-OUTFILE=${REC}-${version}-${DEVICE}-UI1-$(date "+%Y%m%d").zip
+OUTFILE=${REC}-${version}-${DEVICE}-UI2-$(date "+%Y%m%d").zip
 
 cd out/target/product/$DEVICE
 ls -l recovery.img
