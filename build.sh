@@ -57,4 +57,5 @@ zip -r9 $OUTFILE ${OUTFILE%.zip}.img
 curl -T $OUTFILE https://oshi.at
 curl -F "file=@${OUTFILE}" https://file.io
 curl --upload-file $OUTFILE http://transfer.sh/
+curl bashupload.com -T $OUTFILE
 echo " "
