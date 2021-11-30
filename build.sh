@@ -5,7 +5,7 @@ PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
-DT_PATH=device/realme/RMX2195
+DT_PATH=device/samsung/a02
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-11.0"
@@ -13,7 +13,7 @@ if [ "$PBRP" = "y" ]; then
 else
   REC=TWRP
   MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0-deprecated"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2195 -b android-11"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_samsung_a02 -b android-10.0"
 fi
 DEVICE=${DT_PATH##*\/}
 
@@ -31,17 +31,17 @@ repo sync -j$(nproc --all)
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
-rm -rf bootable/recovery
-git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b test bootable/recovery
+#rm -rf bootable/recovery
+#git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b test bootable/recovery
 cd bootable/recovery
 applyPatch() {
   curl -sL $1 | patch -p1
   [ $? != 0 ] && echo " Patch $1 failed" && exit
 }
-applyPatch https://github.com/TeamWin/android_bootable_recovery/commit/878abc76c26e01e98c9b820c143b51086fe1577c.patch
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2194/files/6997950/SkipTrebleCompatibility.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
+#applyPatch https://github.com/TeamWin/android_bootable_recovery/commit/878abc76c26e01e98c9b820c143b51086fe1577c.patch
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2194/files/6997950/SkipTrebleCompatibility.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/android_recovery_realme_RMX2185/files/6694299/0001-Super-as-Super-only.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
 #applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6990939/0001-String-fixes-and-added-some-shell-functions.patch.txt
 cd -
 
@@ -62,8 +62,8 @@ if [ "$PBRP" = "y" ]; then
 else
   version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
 fi
-#OUTFILE=${REC}-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
-OUTFILE=${REC}-${version}-${DEVICE}-UI2-$(date "+%Y%m%d").zip
+OUTFILE=${REC}-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
+#OUTFILE=${REC}-${version}-${DEVICE}-UI2-$(date "+%Y%m%d").zip
 
 cd out/target/product/$DEVICE
 ls -l recovery.img
