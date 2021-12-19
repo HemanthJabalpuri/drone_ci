@@ -4,8 +4,8 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X687 -b 10-8i"
-DT_PATH=device/infinix/X687B
+DT_LINK="https://github.com/hraj9258/twrp_phoenix -b a11"
+DT_PATH=device/xiaomi/phoenix
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
