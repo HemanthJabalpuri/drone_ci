@@ -13,7 +13,7 @@ if [ "$PBRP" = "y" ]; then
 else
   REC=TWRP
   MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0-deprecated"
-  DT_LINK="https://github.com/hraj9258/twrp_phoenix"
+  DT_LINK="https://github.com/hraj9258/twrp_phoenix -b a11"
 fi
 DEVICE=${DT_PATH##*\/}
 
