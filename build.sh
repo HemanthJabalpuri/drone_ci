@@ -5,15 +5,15 @@ PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
-DT_PATH=device/xiaomi/phoenix
+DT_PATH=device/Lenovo/TB8505F
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-11.0"
   DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX3191 -b pbrp"
 else
   REC=TWRP
-  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0-deprecated"
-  DT_LINK="https://github.com/hraj9258/twrp_phoenix -b a11"
+  MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-9.0"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_Lenovo_TB8505F"
 fi
 DEVICE=${DT_PATH##*\/}
 
