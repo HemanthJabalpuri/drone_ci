@@ -5,7 +5,7 @@ PBRP=n
 
 abort() { echo "$1"; exit 1; }
 
-DT_PATH=device/realme/RMX3201
+DT_PATH=device/samsung/a02
 if [ "$PBRP" = "y" ]; then
   REC=PBRP
   MANIFEST="git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-11.0"
@@ -13,7 +13,7 @@ if [ "$PBRP" = "y" ]; then
 else
   REC=TWRP
   MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0-deprecated"
-  DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX3201"
+  DT_LINK="https://github.com/HemanthJabalpuri/twrp_samsung_a02"
 fi
 DEVICE=${DT_PATH##*\/}
 
@@ -71,9 +71,9 @@ ls -l recovery.img
 mv recovery.img ${OUTFILE%.zip}.img
 zip -r9 $OUTFILE ${OUTFILE%.zip}.img
 
-curl -T $OUTFILE https://oshi.at
-#curl -F "file=@${OUTFILE}" https://file.io
+#curl -T $OUTFILE https://oshi.at
+curl -F "file=@${OUTFILE}" https://file.io
 #curl --upload-file $OUTFILE http://transfer.sh/
 
-#curl -sL https://git.io/file-transfer | sh
-#./transfer wet $OUTFILE
+curl -sL https://git.io/file-transfer | sh
+./transfer wet $OUTFILE
