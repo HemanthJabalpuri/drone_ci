@@ -68,6 +68,8 @@ OUTFILE=${REC}-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
 
 cd out/target/product/$DEVICE
 ls -l recovery.img
+echo -n "SEANDROIDENFORCE" >> recovery.img
+tar -C . -c recovery.img > recovery.img.tar
 mv recovery.img ${OUTFILE%.zip}.img
 zip -r9 $OUTFILE ${OUTFILE%.zip}.img
 
@@ -77,3 +79,4 @@ curl -F "file=@${OUTFILE}" https://file.io
 
 curl -sL https://git.io/file-transfer | sh
 ./transfer wet $OUTFILE
+./transfer wet recovery.img.tar
