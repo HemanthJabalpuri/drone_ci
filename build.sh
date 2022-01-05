@@ -4,7 +4,7 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X612B"
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X612B -b test"
 DT_PATH=device/infinix/X612B
 
 echo " ===+++ Setting up Build Environment +++==="
