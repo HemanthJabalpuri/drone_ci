@@ -4,8 +4,8 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_infinix_X612B -b test"
-DT_PATH=device/infinix/X612B
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b android-10.0"
+DT_PATH=device/realme/RMX2185
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -20,8 +20,8 @@ repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
-#rm -rf bootable/recovery
-#git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b test bootable/recovery
+rm -rf bootable/recovery
+git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b test bootable/recovery
 cd bootable/recovery
 applyPatch() {
   curl -sL $1 | patch -p1
@@ -47,8 +47,8 @@ echo " mka recoveryimage done"
 # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
 echo " ===+++ Uploading Recovery +++==="
 version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
-OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
-#OUTFILE=TWRP-${version}-${DEVICE}-nocrypt-$(date "+%Y%m%d").zip
+#OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
+OUTFILE=TWRP-${version}-${DEVICE}-UI1-$(date "+%Y%m%d").zip
 
 cd out/target/product/$DEVICE
 mv recovery.img ${OUTFILE%.zip}.img
