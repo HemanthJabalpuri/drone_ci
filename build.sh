@@ -4,8 +4,8 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_micromax_E7533 -b test"
-DT_PATH=device/micromax/E7533
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2101"
+DT_PATH=device/realme/RMX2101
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -47,8 +47,8 @@ echo " mka recoveryimage done"
 # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
 echo " ===+++ Uploading Recovery +++==="
 version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
-OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
-#OUTFILE=TWRP-${version}-${DEVICE}-UI1-$(date "+%Y%m%d").zip
+#OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
+OUTFILE=TWRP-${version}-${DEVICE}-UI2-$(date "+%Y%m%d").zip
 
 cd out/target/product/$DEVICE
 mv recovery.img ${OUTFILE%.zip}.img
