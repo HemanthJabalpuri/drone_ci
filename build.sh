@@ -4,8 +4,8 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2101"
-DT_PATH=device/realme/RMX2101
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_TECNO_CE7j -b android-11"
+DT_PATH=device/TECNO/CE7j
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
