@@ -9,10 +9,8 @@ apt install openssh-server -y
 
 apt install python3-pip -y
 pip3 install --upgrade pycryptodome git+https://github.com/R0rt1z2/realme-ota
-ls
 echo ====
-ls ~
-realme-ota RMX2189 RMX2185_11.A.95_0950_202106160103 2
+realme-ota RMX2189 RMX2185_11.A.95_0950_202106160103 1
 exit
 
 repo init --depth=1 --no-repo-verify -u git://github.com/ArrowOS/android_manifest.git -b arrow-11.0 -g default,-mips,-darwin,-notdefault
