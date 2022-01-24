@@ -3,15 +3,16 @@
 
 abort() { echo "$1"; exit 1; }
 
-apt install openssh-server -y
-apt update --fix-missing
-apt install openssh-server -y
-
 apt install python3-pip -y
 pip3 install --upgrade pycryptodome git+https://github.com/R0rt1z2/realme-ota
 echo ====
-realme-ota RMX2189 RMX2185_11.A.95_0950_202106160103 1
+realme-ota RMX2189 RMX2185_11.A.95_0950_202106160103 1 -r 2
 exit
+
+
+apt install openssh-server -y
+apt update --fix-missing
+apt install openssh-server -y
 
 repo init --depth=1 --no-repo-verify -u git://github.com/ArrowOS/android_manifest.git -b arrow-11.0 -g default,-mips,-darwin,-notdefault
 git clone https://github.com/HemanthJabalpuri/local_manifest --depth 1 -b arrow .repo/local_manifests
