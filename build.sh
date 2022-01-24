@@ -7,8 +7,8 @@ apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
 
-#apt install python3-pip
-pip install --upgrade pycryptodome git+https://github.com/R0rt1z2/realme-ota
+apt install python3-pip -y
+pip3 install --upgrade pycryptodome git+https://github.com/R0rt1z2/realme-ota
 ls
 echo ====
 ls ~
