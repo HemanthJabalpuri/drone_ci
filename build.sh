@@ -6,6 +6,7 @@ abort() { echo "$1"; exit 1; }
 apt install python3-pip -y
 apt update --fix-missing
 apt install python3-pip -y
+python3 -m pip install requests
 pip3 install --upgrade pycryptodome git+https://github.com/R0rt1z2/realme-ota
 echo ====
 realme-ota RMX2189 RMX2185_11.A.95_0950_202106160103 1 -r 2
