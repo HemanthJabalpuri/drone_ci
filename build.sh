@@ -9,7 +9,7 @@ apt install python3-pip -y
 echo '#### Installing requests ####' && python3 -m pip install requests
 echo '#### Installing pycryptodome ####' && pip3 install --upgrade pycryptodome git+https://github.com/R0rt1z2/realme-ota
 # Realme C12 echo '#### Running command ####' && realme-ota RMX2189 RMX2185_11.A.95_0950_202106160103 1 -r 2
-echo '#### Running command ####' && realme-ota RMX3201TR RMX3061EU_11.A.52_0520_202109192153 1 -r 3
+echo '#### Running command ####' && realme-ota RMX3201TR RMX3061EU_11.A.52_0520_202109192153 1 -r 0
 
 exit
 
