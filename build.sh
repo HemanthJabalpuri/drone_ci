@@ -52,5 +52,4 @@ curl bashupload.com -T $OUTFILE
 echo " "
 curl -sL https://git.io/file-transfer | sh
 ./transfer wet $OUTFILE
-./transfer wet recovery.img.tar
 echo " "
