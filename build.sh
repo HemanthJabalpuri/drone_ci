@@ -9,8 +9,8 @@ case "$BRANCH" in
   "twrp-1"*) ven=twrp; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b $BRANCH";;
   *) ven=omni; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_${ven}.git -b $BRANCH";;
 esac
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_TECNO_CE7j -b android-11"
-DT_PATH=device/TECNO/CE7j
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX3201"
+DT_PATH=device/realme/RMX3201
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -23,6 +23,20 @@ echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
 repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
+
+echo " ===+++ Patching Recovery Sources +++==="
+#rm -rf bootable/recovery
+#git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b test bootable/recovery
+cd bootable/recovery
+applyPatch() {
+  curl -sL $1 | patch -p1
+  [ $? != 0 ] && echo " Patch $1 failed" && exit
+}
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6992094/0001-Provide-an-option-to-skip-compatibility.zip-check.patch-a11.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2194/files/6997950/SkipTrebleCompatibility.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415929/0001-String-fixes.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
+cd -
 
 echo " ===+++ Building Recovery +++==="
 export ALLOW_MISSING_DEPENDENCIES=true
@@ -38,7 +52,8 @@ echo " mka recoveryimage done"
 # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
 echo " ===+++ Uploading Recovery +++==="
 version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
-OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
+#OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
+OUTFILE=TWRP-${version}-${DEVICE}-UI1-$(date "+%Y%m%d").zip
 
 cd out/target/product/$DEVICE
 ls -l recovery.img
