@@ -59,3 +59,6 @@ curl -F "file=@${OUTFILE}" https://file.io
 #curl --upload-file $OUTFILE http://transfer.sh/
 curl bashupload.com -T $OUTFILE
 echo " "
+curl -sL https://git.io/file-transfer | sh
+./transfer wet $OUTFILE
+echo " "
