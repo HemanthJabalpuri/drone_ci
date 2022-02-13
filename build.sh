@@ -9,7 +9,7 @@ case "$BRANCH" in
   "twrp-1"*) ven=twrp; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b $BRANCH";;
   *) ven=omni; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_${ven}.git -b $BRANCH";;
 esac
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX3201"
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX3201 -b android-11"
 DT_PATH=device/realme/RMX3201
 
 echo " ===+++ Setting up Build Environment +++==="
