@@ -18,13 +18,14 @@ apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
 
-repo init --depth=1 --no-repo-verify -u git://github.com/ArrowOS/android_manifest.git -b arrow-11.0 -g default,-mips,-darwin,-notdefault
-git clone https://github.com/HemanthJabalpuri/local_manifest --depth 1 -b arrow .repo/local_manifests
+# sync rom
+repo init --depth=1 --no-repo-verify -u git://github.com/crdroidandroid/android.git -b 11.0 -g default,-mips,-darwin,-notdefault
+git clone https://github.com/HemanthJabalpuri/local_manifest --depth 1 -b crdroid-11-UI1 .repo/local_manifests
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
-# build rom (5-test)
+# build rom [4]
 source build/envsetup.sh
-lunch arrow_RMX2185-userdebug
+lunch lineage_RMX2185-userdebug
 
 make sepolicy
 make bootimage
