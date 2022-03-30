@@ -3,15 +3,15 @@
 
 abort() { echo "$1"; exit 1; }
 
-apt install python3-pip -y
-apt update --fix-missing
-apt install python3-pip -y
-echo '#### Installing requests ####' && python3 -m pip install requests
-echo '#### Installing pycryptodome ####' && pip3 install --upgrade pycryptodome git+https://github.com/R0rt1z2/realme-ota
+#apt install python3-pip -y
+#apt update --fix-missing
+#apt install python3-pip -y
+#echo '#### Installing requests ####' && python3 -m pip install requests
+#echo '#### Installing pycryptodome ####' && pip3 install --upgrade pycryptodome git+https://github.com/R0rt1z2/realme-ota
 # Realme C12 echo '#### Running command ####' && realme-ota RMX2189 RMX2185_11.A.95_0950_202106160103 1 -r 2
-echo '#### Running command ####' && realme-ota RMX2195T2 RMX2195PU_11.A.39_0390_202107122302 1
+#echo '#### Running command ####' && realme-ota RMX2195T2 RMX2195PU_11.A.39_0390_202107122302 1
 
-exit
+#exit
 
 
 apt install openssh-server -y
