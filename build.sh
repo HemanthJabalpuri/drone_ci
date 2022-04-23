@@ -3,7 +3,9 @@
 
 abort() { echo "$1"; exit 1; }
 
-MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1"
+ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+
+MANIFEST="git@github.com:minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1"
 DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b android-11"
 DT_PATH=device/realme/RMX2185
 
