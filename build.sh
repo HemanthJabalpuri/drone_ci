@@ -3,8 +3,6 @@
 
 abort() { echo "$1"; exit 1; }
 
-ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-
 MANIFEST="git@github.com:minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1"
 DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b android-11"
 DT_PATH=device/realme/RMX2185
@@ -14,6 +12,8 @@ apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
 mkdir ~/twrp11 && cd ~/twrp11
+mkdir ~/.ssh
+ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 DEVICE=${DT_PATH##*\/}
 
 echo " ===+++ Syncing Recovery Sources +++==="
