@@ -11,12 +11,8 @@ echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
-mkdir ~/twrp11 && cd ~/twrp11
-mkdir ~/.ssh
-ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-git config --global user.email "hemanthjabalpuri@gmail.com"
-git config --global user.name "HemanthJabalpuri"
 DEVICE=${DT_PATH##*\/}
+export TARGET_SUPPORTS_64_BIT_APPS=true
 
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
