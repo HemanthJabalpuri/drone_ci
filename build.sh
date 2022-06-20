@@ -20,8 +20,9 @@ repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
-rm -rf bootable/recovery
-git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b android-12.1 bootable/recovery
+rm -rf bootable/recovery system/vold
+git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b test bootable/recovery
+git clone --depth=1 https://github.com/HemanthJabalpuri/android_system_vold -b test system/vold
 cd bootable/recovery
 applyPatch() {
   curl -sL $1 | patch -p1
