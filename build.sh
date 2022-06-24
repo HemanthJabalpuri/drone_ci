@@ -4,7 +4,7 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1"
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b android-11"
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b android-11-twrp12.1"
 DT_PATH=device/realme/RMX2185
 
 echo " ===+++ Setting up Build Environment +++==="
@@ -21,7 +21,7 @@ git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
 rm -rf bootable/recovery system/vold
-git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b test2 bootable/recovery
+git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b test bootable/recovery
 git clone --depth=1 https://github.com/HemanthJabalpuri/android_system_vold -b test system/vold
 cd bootable/recovery
 applyPatch() {
