@@ -3,7 +3,7 @@
 
 abort() { echo "$1"; exit 1; }
 
-MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
+MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1"
 DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b testUI2"
 DT_PATH=device/realme/RMX2185
 
@@ -11,8 +11,8 @@ echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
-mkdir ~/twrp11 && cd ~/twrp11
 DEVICE=${DT_PATH##*\/}
+export TARGET_SUPPORTS_64_BIT_APPS=true
 
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
@@ -20,19 +20,20 @@ repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
-rm -rf bootable/recovery
+rm -rf bootable/recovery system/vold
 git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b test bootable/recovery
+git clone --depth=1 https://github.com/HemanthJabalpuri/android_system_vold -b test system/vold
 cd bootable/recovery
 applyPatch() {
   curl -sL $1 | patch -p1
   [ $? != 0 ] && echo " Patch $1 failed" && exit
 }
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6992094/0001-Provide-an-option-to-skip-compatibility.zip-check.patch-a11.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974877/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt
 #applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2194/files/6997950/SkipTrebleCompatibility.patch.txt
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415929/0001-String-fixes.patch.txt
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415933/0001-Some-shell-funtions.patch.txt
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7350752/0001-Super-as-Super-only.patch-a11.txt
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974880/0001-String-fixes.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974878/0001-Some-shell-funtions.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974881/0001-Super-as-Super-only.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974882/NotchFix.patch.txt
 cd -
 
 echo " ===+++ Building Recovery +++==="
