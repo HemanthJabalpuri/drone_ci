@@ -11,7 +11,13 @@ abort() { echo "$1"; exit 1; }
 # Realme C12 echo '#### Running command ####' && realme-ota RMX2189 RMX2185_11.A.95_0950_202106160103 1 -r 2
 #echo '#### Running command ####' && realme-ota RMX2195T2 RMX2195PU_11.A.39_0390_202107122302 1
 
-#exit
+
+git clone https://github.com/HemanthJabalpuri/Firmware_extractor
+cd Firmware_extractor
+wget https://mirrors.lolinet.com/firmware/moto/java/official/RETAIL/JAVA_RETAIL_P352CE_PVT_11.0_64B_CFC_68-29-2.00-00_FLASHER_sign_20220123131534.zip -O motog20.zip
+bash extractor.sh motog20.zip
+ls -lR
+exit
 
 
 apt install openssh-server -y
