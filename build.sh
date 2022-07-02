@@ -20,6 +20,12 @@ cd Firmware_extractor
 #wget -q "https://dl-2.svrip.com/files/SM-A035F/INS/SM-A035F_INS_A035FXXU1AVD3_A035FODM1AVD3_A035FXXU1AVD3_A035FXXU1AVD3.zip?key=dkNIbGRKZkxaQVVNOXdEcUx0WVhpSXZyaXJ6akdVbW4rb1M2RjhVZWg4dz06UmxjTjcvaDE3TzRndmN3L242a0JVa2dkZHJRS1hUU3pjT2ZLbnVoQWo5cz06ekdDOHNmQWdxWG05UHlHQVJRckFNQT09Omx6MW9VaHVSSXBBMHltVC9zeFRJRUhNY1BSb3BFQ29VVGNUZEdEaEFJM2UvQUkyRnNhSTNza2IwOXZNYnpGbzFFVWNyUW0wd2haQnJNc3kydlBPM2dtc3ZiUEhJYVR1K3g0Nlk3cHlQNGxrN1EwVUJVUEZaVWJKN2JBQUNCRDFIT1hucTJnaGJvTzlyVHNxM2xtK2xYZ0RjYkpBWGt1Y3FYMmd5bytBV1BHcUFHVFY1dUpzRGJRSG1nZ0tESUJwLw==" -O motog20.zip
 megadl --no-progress 'https://mega.nz/#!r98yWC5L!Jf6y2_kksIzChwatdeG6bA9hJrHvOLo4JP4gmYcEEAY'
 echo "$(ls *.zip | head -n 1)"
+mv 'AGM(T62Ex-EU)_L1688.6.01.08.EU_TFDownload_202006192331_user.zip' out.zip
+echo "##############################"
+unzip -l out.zip
+curl bashupload.com -T out.zip
+unzip out.zip -d .
+echo "##############################"
 bash extractor.sh "$(ls *.zip | head -n 1)"
 ls -lhR
 exit
