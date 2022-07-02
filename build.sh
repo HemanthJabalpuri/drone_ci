@@ -12,11 +12,15 @@ abort() { echo "$1"; exit 1; }
 #echo '#### Running command ####' && realme-ota RMX2195T2 RMX2195PU_11.A.39_0390_202107122302 1
 
 
+apt install megatools -y
+apt update --fix-missing
+apt install megatools -y
 git clone https://github.com/HemanthJabalpuri/Firmware_extractor
 cd Firmware_extractor
-wget -q "https://dl-2.svrip.com/files/SM-A035F/INS/SM-A035F_INS_A035FXXU1AVD3_A035FODM1AVD3_A035FXXU1AVD3_A035FXXU1AVD3.zip?key=dkNIbGRKZkxaQVVNOXdEcUx0WVhpSXZyaXJ6akdVbW4rb1M2RjhVZWg4dz06UmxjTjcvaDE3TzRndmN3L242a0JVa2dkZHJRS1hUU3pjT2ZLbnVoQWo5cz06ekdDOHNmQWdxWG05UHlHQVJRckFNQT09Omx6MW9VaHVSSXBBMHltVC9zeFRJRUhNY1BSb3BFQ29VVGNUZEdEaEFJM2UvQUkyRnNhSTNza2IwOXZNYnpGbzFFVWNyUW0wd2haQnJNc3kydlBPM2dtc3ZiUEhJYVR1K3g0Nlk3cHlQNGxrN1EwVUJVUEZaVWJKN2JBQUNCRDFIT1hucTJnaGJvTzlyVHNxM2xtK2xYZ0RjYkpBWGt1Y3FYMmd5bytBV1BHcUFHVFY1dUpzRGJRSG1nZ0tESUJwLw==" -O motog20.zip
-bash extractor.sh motog20.zip
-ls -lR
+#wget -q "https://dl-2.svrip.com/files/SM-A035F/INS/SM-A035F_INS_A035FXXU1AVD3_A035FODM1AVD3_A035FXXU1AVD3_A035FXXU1AVD3.zip?key=dkNIbGRKZkxaQVVNOXdEcUx0WVhpSXZyaXJ6akdVbW4rb1M2RjhVZWg4dz06UmxjTjcvaDE3TzRndmN3L242a0JVa2dkZHJRS1hUU3pjT2ZLbnVoQWo5cz06ekdDOHNmQWdxWG05UHlHQVJRckFNQT09Omx6MW9VaHVSSXBBMHltVC9zeFRJRUhNY1BSb3BFQ29VVGNUZEdEaEFJM2UvQUkyRnNhSTNza2IwOXZNYnpGbzFFVWNyUW0wd2haQnJNc3kydlBPM2dtc3ZiUEhJYVR1K3g0Nlk3cHlQNGxrN1EwVUJVUEZaVWJKN2JBQUNCRDFIT1hucTJnaGJvTzlyVHNxM2xtK2xYZ0RjYkpBWGt1Y3FYMmd5bytBV1BHcUFHVFY1dUpzRGJRSG1nZ0tESUJwLw==" -O motog20.zip
+megadl --no-progress 'https://mega.nz/file/r98yWC5L#Jf6y2_kksIzChwatdeG6bA9hJrHvOLo4JP4gmYcEEAY'
+#bash extractor.sh motog20.zip
+ls -lhR
 exit
 
 
