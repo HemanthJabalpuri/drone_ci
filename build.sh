@@ -1,5 +1,5 @@
 #!/bin/bash
-# Just a basic script U can improvise lateron asper ur need xD 
+# Just a basic script you can improvise later on as per need.
 
 abort() { echo "$1"; exit 1; }
 
@@ -20,9 +20,8 @@ repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
-rm -rf bootable/recovery system/vold
+rm -rf bootable/recovery
 git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b android-12.1-test bootable/recovery
-git clone --depth=1 https://github.com/HemanthJabalpuri/android_system_vold -b android-12.1-test system/vold
 cd bootable/recovery
 applyPatch() {
   curl -sL $1 | patch -p1
