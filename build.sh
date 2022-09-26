@@ -30,7 +30,7 @@ applyPatch() {
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415929/0001-String-fixes.patch.txt
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415933/0001-Some-shell-funtions.patch.txt
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7350752/0001-Super-as-Super-only.patch-a11.txt
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/9648214/NotchFix.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/9648214/NotchFix.patch.txt
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/9647625/RemoveDataFlags.patch.txt
 cd -
 
