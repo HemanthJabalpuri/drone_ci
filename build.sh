@@ -3,8 +3,8 @@
 
 abort() { echo "$1"; exit 1; }
 
-MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1"
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b android-11"
+MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b nocrypt-twrp11"
 DT_PATH=device/realme/RMX2185
 
 echo " ===+++ Setting up Build Environment +++==="
@@ -20,8 +20,8 @@ repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Patching Recovery Sources +++==="
-rm -rf bootable/recovery
-git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b android-12.1-test bootable/recovery
+#rm -rf bootable/recovery
+#git clone --depth=1 https://github.com/HemanthJabalpuri/android_bootable_recovery -b android-12.1-test bootable/recovery
 cd bootable/recovery
 applyPatch() {
   curl -sL $1 | patch -p1
@@ -29,10 +29,11 @@ applyPatch() {
 }
 #applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974877/0001-Provide-an-option-to-skip-compatibility.zip-check.patch.txt
 #applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2194/files/6997950/SkipTrebleCompatibility.patch.txt
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974880/0001-String-fixes.patch.txt
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974878/0001-Some-shell-funtions.patch.txt
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974881/0001-Super-as-Super-only.patch.txt
-#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974882/NotchFix.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974880/0001-String-fixes.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974878/0001-Some-shell-funtions.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974881/0001-Super-as-Super-only.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/8974882/NotchFix.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/9647625/RemoveDataFlags.patch.txt
 cd -
 
 echo " ===+++ Building Recovery +++==="
@@ -48,7 +49,7 @@ echo " mka recoveryimage done"
 echo " ===+++ Uploading Recovery +++==="
 version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
 #OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
-OUTFILE=TWRP-${version}-${DEVICE}-UI1-$(date "+%Y%m%d").zip
+OUTFILE=TWRP-${version}-${DEVICE}-nocrypt-$(date "+%Y%m%d").zip
 
 cd out/target/product/$DEVICE
 mv recovery.img ${OUTFILE%.zip}.img
