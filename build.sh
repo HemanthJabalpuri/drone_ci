@@ -9,8 +9,8 @@ case "$BRANCH" in
   "twrp-1"*) ven=twrp; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b $BRANCH";;
   *) ven=omni; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_${ven}.git -b $BRANCH";;
 esac
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX3201 -b android-11"
-DT_PATH=device/realme/RMX3201
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_lenovo_X306X -b android-11"
+DT_PATH=device/lenovo/X306X
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -32,10 +32,10 @@ applyPatch() {
   curl -sL $1 | patch -p1
   [ $? != 0 ] && echo " Patch $1 failed" && exit
 }
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6992094/0001-Provide-an-option-to-skip-compatibility.zip-check.patch-a11.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6992094/0001-Provide-an-option-to-skip-compatibility.zip-check.patch-a11.txt
 #applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2194/files/6997950/SkipTrebleCompatibility.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415929/0001-String-fixes.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415929/0001-String-fixes.patch.txt
+#applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
 cd -
 
 echo " ===+++ Building Recovery +++==="
