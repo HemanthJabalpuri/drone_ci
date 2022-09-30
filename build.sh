@@ -6,7 +6,7 @@ abort() { echo "$1"; exit 1; }
 BRANCH="twrp-11" # choose one of 'twrp-11', 'twrp-10.0-deprecated', 'twrp-9.0' etc
 case "$BRANCH" in
   "twrp-10.0-deprecated") ven=omni; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_${ven}.git -b $BRANCH";;
-  "twrp-1"*) ven=twrp; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b $BRANCH";;
+  "twrp-1"*) ven=twrp; MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b $BRANCH";;
   *) ven=omni; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_${ven}.git -b $BRANCH";;
 esac
 DT_LINK="https://github.com/HemanthJabalpuri/twrp_lenovo_X306X -b android-11"
