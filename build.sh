@@ -18,6 +18,7 @@ apt update --fix-missing
 apt install openssh-server -y
 mkdir ~/twrpBuilding && cd ~/twrpBuilding
 DEVICE=${DT_PATH##*\/}
+export TARGET_SUPPORTS_64_BIT_APPS=true
 
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
