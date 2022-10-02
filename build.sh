@@ -3,14 +3,14 @@
 
 abort() { echo "$1"; exit 1; }
 
-BRANCH="twrp-11" # choose one of 'twrp-11', 'twrp-10.0-deprecated', 'twrp-9.0' etc
+BRANCH="twrp-12.1" # choose one of 'twrp-11', 'twrp-10.0-deprecated', 'twrp-9.0' etc
 case "$BRANCH" in
   "twrp-10.0-deprecated") ven=omni; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_${ven}.git -b $BRANCH";;
   "twrp-1"*) ven=twrp; MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b $BRANCH";;
   *) ven=omni; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_${ven}.git -b $BRANCH";;
 esac
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_lenovo_X306X -b android-11"
-DT_PATH=device/lenovo/X306X
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b twrp12.1"
+DT_PATH=device/realme/RMX2185
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -36,6 +36,7 @@ applyPatch() {
 #applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2194/files/6997950/SkipTrebleCompatibility.patch.txt
 #applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415929/0001-String-fixes.patch.txt
 #applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/6991161/NotchFix.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/android_bootable_recovery/commit/e68410787caeb2473981df53171639e397908cb8.patch
 cd -
 
 echo " ===+++ Building Recovery +++==="
