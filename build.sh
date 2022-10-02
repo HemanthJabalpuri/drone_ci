@@ -9,7 +9,7 @@ case "$BRANCH" in
   "twrp-1"*) ven=twrp; MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b $BRANCH";;
   *) ven=omni; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_${ven}.git -b $BRANCH";;
 esac
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b twrp12.1"
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b twrp12.1-UI2"
 DT_PATH=device/realme/RMX2185
 
 echo " ===+++ Setting up Build Environment +++==="
@@ -55,7 +55,7 @@ echo " mka recoveryimage done"
 echo " ===+++ Uploading Recovery +++==="
 version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
 #OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
-OUTFILE=TWRP-${version}-${DEVICE}-UI1-$(date "+%Y%m%d").zip
+OUTFILE=TWRP-${version}-${DEVICE}-UI2-$(date "+%Y%m%d").zip
 
 cd out/target/product/$DEVICE
 ls -l recovery.img
