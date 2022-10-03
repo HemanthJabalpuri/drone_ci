@@ -12,7 +12,6 @@ apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
 DEVICE=${DT_PATH##*\/}
-export TARGET_SUPPORTS_64_BIT_APPS=true
 
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
@@ -28,10 +27,9 @@ applyPatch() {
   [ $? != 0 ] && echo " Patch $1 failed" && exit
 }
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415929/0001-String-fixes.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415933/0001-Some-shell-funtions.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/9694955/0001-Some-shell-funtions.patch.txt
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7350752/0001-Super-as-Super-only.patch-a11.txt
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/9680977/changeNavbarLayout.patch.txt
-applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/9655058/RemoveDataFlags.patch.txt
 cd -
 
 echo " ===+++ Building Recovery +++==="
