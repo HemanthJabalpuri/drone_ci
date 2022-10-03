@@ -3,7 +3,7 @@
 
 abort() { echo "$1"; exit 1; }
 
-MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1"
+MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
 DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185 -b android-10.0"
 DT_PATH=device/realme/RMX2185
 
