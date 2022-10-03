@@ -30,6 +30,7 @@ applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415929
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/9694955/0001-Some-shell-funtions.patch.txt
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7350752/0001-Super-as-Super-only.patch-a11.txt
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/9680977/changeNavbarLayout.patch.txt
+applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/9696114/0001-RemoveNoOSinstalledWarning.patch.txt
 cd -
 
 echo " ===+++ Building Recovery +++==="
