@@ -21,13 +21,36 @@ make sepolicy
 make bootimage
 make init
 
-curl -sL https://git.io/file-transfer | sh
-./transfer wet out/target/product/RMX2185/Changelog.txt
+Changelog=Changelog.txt
+changelog_days=300
+REPO_LIST="$(repo list --path | sed 's|^vendor/crDroidOTA$||')"
+for i in $(seq $changelog_days); do
+    After_Date=`date --date="$i days ago" +%m-%d-%Y`
+    k=$(expr $i - 1)
+    Until_Date=`date --date="$k days ago" +%m-%d-%Y`
 
-bash build/tools/changelog.sh
+    # Line with after --- until was too long for a small ListView
+    echo '====================' >> $Changelog
+    echo  "     "$Until_Date    >> $Changelog
+    echo '====================' >> $Changelog
+
+    # Cycle through all available repos
+    for repo_path in $REPO_LIST; do
+        # Find commits between 2 dates
+        GIT_LOG="$(git -C "$repo_path" log --oneline --after="$After_Date" --until="$Until_Date")"
+        [ -n "$GIT_LOG" ] && {
+            printf '\n   * '; echo "$repo_path"
+            echo "$GIT_LOG"
+        } >> $Changelog
+    done
+    echo >> $Changelog
+done
+sed -i 's/project/   */g' $Changelog
+
 echo " "
 curl -sL https://git.io/file-transfer | sh
-./transfer wet out/target/product/RMX2185/Changelog.txt
+./transfer wet $Changelog
+
 echo " "
 echo ".......Done......." && exit
 
