@@ -3,6 +3,35 @@
 
 abort() { echo "$1"; exit 1; }
 
+apt install openssh-server -y
+apt update --fix-missing
+apt install openssh-server -y
+
+# sync rom
+repo init --depth=1 --no-repo-verify -u https://github.com/crdroidandroid/android.git -b 11.0 -g default,-mips,-darwin,-notdefault
+git clone https://github.com/HemanthJabalpuri/local_manifest --depth 1 -b crdroid-11-UI1 .repo/local_manifests
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+
+# build rom [4]
+source build/envsetup.sh
+export changelog_days=365
+lunch lineage_RMX2185-userdebug
+
+make sepolicy
+make bootimage
+make init
+
+curl -sL https://git.io/file-transfer | sh
+./transfer wet out/target/product/RMX2185/Changelog.txt
+
+bash build/tools/changelog.sh
+echo " "
+curl -sL https://git.io/file-transfer | sh
+./transfer wet out/target/product/RMX2185/Changelog.txt
+echo " "
+echo ".......Done......." && exit
+
+
 apt install python3-pip -y
 apt update --fix-missing
 apt install python3-pip -y
@@ -31,25 +60,6 @@ echo "##############################"
 #ls -lhR
 exit
 
-
-apt install openssh-server -y
-apt update --fix-missing
-apt install openssh-server -y
-
-# sync rom
-repo init --depth=1 --no-repo-verify -u https://github.com/crdroidandroid/android.git -b 11.0 -g default,-mips,-darwin,-notdefault
-git clone https://github.com/HemanthJabalpuri/local_manifest --depth 1 -b crdroid-11-UI1 .repo/local_manifests
-repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
-
-# build rom [4]
-source build/envsetup.sh
-lunch lineage_RMX2185-userdebug
-
-make sepolicy
-make bootimage
-make init
-
-echo ".......Done......." && exit
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
 
