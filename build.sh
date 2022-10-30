@@ -26,7 +26,7 @@ applyPatch() {
   curl -sL $1 | patch -p1
   [ $? != 0 ] && echo " Patch $1 failed" && exit
 }
-applyPatch https://github.com/HemanthJabalpuri/android_bootable_recovery/commit/e68410787caeb2473981df53171639e397908cb8.patch
+applyPatch https://github.com/HemanthJabalpuri/android_bootable_recovery/commit/22e9c22965d25247f809e9325364e174f13ddf0f.patch
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7415929/0001-String-fixes.patch.txt
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/9694955/0001-Some-shell-funtions.patch.txt
 applyPatch https://github.com/HemanthJabalpuri/twrp_realme_RMX2185/files/7350752/0001-Super-as-Super-only.patch-a11.txt
