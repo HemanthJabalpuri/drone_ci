@@ -39,25 +39,7 @@ export ALLOW_MISSING_DEPENDENCIES=true
 echo " source build/envsetup.sh done"
 
 version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
-upload_twrp() {
-  # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
-  echo " ===+++ Uploading Recovery +++==="
-  #OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
-  OUTFILE=TWRP-${version}-${1}-${DEVICE}-$(date "+%Y%m%d").zip
-
-  cd out/target/product/$DEVICE
-  mv recovery.img ${OUTFILE%.zip}.img
-  zip -r9 $OUTFILE ${OUTFILE%.zip}.img
-
-  #curl -T $OUTFILE https://oshi.at
-  curl -F "file=@${OUTFILE}" https://file.io
-  #curl --upload-file $OUTFILE http://transfer.sh/
-  curl bashupload.com -T $OUTFILE
-  echo " "
-  curl -sL https://git.io/file-transfer | sh
-  ./transfer wet $OUTFILE
-  echo " "
-}
+mkdir uploads
 
 build_twrp() {
   rm -rf $DT_PATH
@@ -69,11 +51,32 @@ build_twrp() {
   mka recoveryimage || abort " mka failed with exit status $?"
   echo " mka recoveryimage done"
 
-  upload_twrp $3
+  echo " ===+++ Moving Recovery +++==="
+  #OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
+  OUTFILE=TWRP-${version}-${3}-${DEVICE}-$(date "+%Y%m%d").zip
+
+  cd out/target/product/$DEVICE
+  mv recovery.img ${OUTFILE%.zip}.img
+  zip -r9 $OUTFILE ${OUTFILE%.zip}.img
+  cd -
+  cp out/target/product/$DEVICE/$OUTFILE uploads/
 }
 
 build_twrp nocrypt-twrp-11 "1-nocrypt" "1-nocrypt"
 build_twrp android-11 "1" "1-UI2"
 build_twrp android-10.0 "1" "1-UI1"
+
+ls -lR uploads
+for i in ./uploads/*.zip; do
+  # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
+  #curl -T $i https://oshi.at
+  curl -F "file=@${i}" https://file.io
+  #curl --upload-file $i http://transfer.sh/
+  curl bashupload.com -T $i
+  echo " "
+  curl -sL https://git.io/file-transfer | sh
+  ./transfer wet $i
+  echo " "
+done
 
 echo " Done"
