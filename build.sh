@@ -38,10 +38,8 @@ echo " ===+++ Building Recovery +++==="
 export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
 echo " source build/envsetup.sh done"
-
-export TW_DEVICE_VERSION="1-nocrypt"
-
 lunch twrp_${DEVICE}-eng || abort " lunch failed with exit status $?"
+export TW_DEVICE_VERSION="1-nocrypt"
 echo " lunch twrp_${DEVICE}-eng done"
 mka recoveryimage || abort " mka failed with exit status $?"
 echo " mka recoveryimage done"
@@ -50,7 +48,7 @@ echo " mka recoveryimage done"
 echo " ===+++ Uploading Recovery +++==="
 version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
 #OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
-OUTFILE=TWRP-${version}_1-${DEVICE}-nocrypt-$(date "+%Y%m%d").zip
+OUTFILE=TWRP-${version}-1-nocrypt-${DEVICE}-$(date "+%Y%m%d").zip
 
 cd out/target/product/$DEVICE
 mv recovery.img ${OUTFILE%.zip}.img
