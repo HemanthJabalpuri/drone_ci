@@ -4,7 +4,7 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185"
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX3201"
 DT_PATH=device/realme/RMX2185
 
 echo " ===+++ Setting up Build Environment +++==="
@@ -62,9 +62,7 @@ build_twrp() {
   cp out/target/product/$DEVICE/$OUTFILE uploads/
 }
 
-build_twrp nocrypt-twrp-11 "1-nocrypt" "1-nocrypt"
-build_twrp android-11 "1" "1-UI2"
-build_twrp android-10.0 "1" "1-UI1"
+build_twrp android-10.0 "test" "test-UI1"
 
 ls -lR uploads
 for i in ./uploads/*.zip; do
