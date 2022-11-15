@@ -3,17 +3,6 @@
 
 abort() { echo "$1"; exit 1; }
 
-apt install python3-pip -y
-apt update --fix-missing
-apt install python3-pip -y
-echo '#### Installing requests ####' && python3 -m pip install requests
-echo '#### Installing pycryptodome ####' && pip3 install --upgrade pycryptodome git+https://github.com/R0rt1z2/realme-ota
-# Realme C12
-echo '#### Running command ####' && realme-ota RMX2189 RMX2185_11.A.95_0950_202106160103 1 0 -r 2
-echo '#### Running command ####' && realme-ota RMX2195T2 RMX2195PU_11.A.39_0390_202107122302 1 0 -r 1
-exit
-
-
 apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
@@ -31,36 +20,6 @@ lunch lineage_RMX2185-userdebug
 make sepolicy
 make bootimage
 make init
-
-Changelog=Changelog.txt
-changelog_days=300
-REPO_LIST="$(repo list --path | sed 's|^vendor/crDroidOTA$||')"
-for i in $(seq $changelog_days); do
-    After_Date=`date --date="$i days ago" +%m-%d-%Y`
-    k=$(expr $i - 1)
-    Until_Date=`date --date="$k days ago" +%m-%d-%Y`
-
-    # Line with after --- until was too long for a small ListView
-    echo '====================' >> $Changelog
-    echo  "     "$Until_Date    >> $Changelog
-    echo '====================' >> $Changelog
-
-    # Cycle through all available repos
-    for repo_path in $REPO_LIST; do
-        # Find commits between 2 dates
-        GIT_LOG="$(git -C "$repo_path" log --oneline --after="$After_Date" --until="$Until_Date")"
-        [ -n "$GIT_LOG" ] && {
-            printf '\n   * '; echo "$repo_path"
-            echo "$GIT_LOG"
-        } >> $Changelog
-    done
-    echo >> $Changelog
-done
-sed -i 's/project/   */g' $Changelog
-
-echo " "
-curl -sL https://git.io/file-transfer | sh
-./transfer wet $Changelog
 
 echo " "
 echo ".......Done......." && exit
