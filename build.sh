@@ -3,14 +3,14 @@
 
 abort() { echo "$1"; exit 1; }
 
-BRANCH="twrp-11" # choose one of 'twrp-11', 'twrp-10.0-deprecated', 'twrp-9.0' etc
+BRANCH="twrp-11" # choose one of 'twrp-12.1', 'twrp-11', 'twrp-10.0-deprecated', 'twrp-9.0' etc
 case "$BRANCH" in
   "twrp-10.0-deprecated") ven=omni; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_${ven}.git -b $BRANCH";;
   "twrp-1"*) ven=twrp; MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b $BRANCH";;
   *) ven=omni; MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_${ven}.git -b $BRANCH";;
 esac
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_lenovo_X306X -b test"
-DT_PATH=device/lenovo/X306X
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2101"
+DT_PATH=device/realme/RMX2101
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -53,7 +53,7 @@ echo " mka recoveryimage done"
 echo " ===+++ Uploading Recovery +++==="
 version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
 #OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
-OUTFILE=TWRP-${version}-${DEVICE}-test2-$(date "+%Y%m%d").zip
+OUTFILE=TWRP-${version}-${DEVICE}-UI2-test-$(date "+%Y%m%d").zip
 
 cd out/target/product/$DEVICE
 ls -l recovery.img
