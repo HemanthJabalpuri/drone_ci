@@ -4,8 +4,8 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11"
-DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX3201"
-DT_PATH=device/realme/RMX3201
+DT_LINK="https://github.com/HemanthJabalpuri/twrp_realme_RMX2185"
+DT_PATH=device/realme/RMX2185
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -41,6 +41,7 @@ echo " source build/envsetup.sh done"
 version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
 mkdir uploads
 
+# build_twrp branch device_version version_for_filename
 build_twrp() {
   rm -rf $DT_PATH
   git clone --depth=1 $DT_LINK -b $1 $DT_PATH
@@ -62,7 +63,7 @@ build_twrp() {
   cp out/target/product/$DEVICE/$OUTFILE uploads/
 }
 
-build_twrp android-10.0 "test" "test-UI1"
+build_twrp nocrypt-twrp-11 "1-nocrypt" "1-nocrypt"
 
 ls -lR uploads
 for i in ./uploads/*.zip; do
